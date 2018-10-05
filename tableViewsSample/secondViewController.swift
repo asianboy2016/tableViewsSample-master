@@ -42,13 +42,14 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         secondTableView.delegate = self
         secondTableView.dataSource = self
         
-        // 選択されたジャンルによってセルの数を変える
+        // 選択されたジャンルによってセルの数を変える　case 0 の時はfruitArrayの要素の個数を arrayLengthに入れるという意味
         // getCellの中身が・・・
+        // ViewControllerから選択されたCell番号を受け取る変数　var getCell: Int!　secVC.getCell = chosenCell
         switch getCell {
-            // 0のとき
+            // 0のとき 果物の時
         case 0:
             arrayLength = fruitArray.count
-            // 1のとき
+            // 1のとき　スポーツの時
         case 1:
             arrayLength = sportArray.count
             // 2のとき
@@ -77,13 +78,15 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     // セルの数を指定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // someArrayの中身の数だけセルを表示
+        // someArrayの中身の数だけセルを表示 ※ジャンルの中身の数(arrayLength)を返しているのでは？ OR ジャンルの中身の数だけセルを表示　かな
+        //最初のswitch文でarrayLengthの数を決めているので、arrayLengthという値を返すだけで数が分かる。
         return arrayLength
     }
     
     // 各セルの要素を指定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // UITableViewCellのインスタンスを生成
+        //tableViewCellのファイルを指定している
         let cell = secondTableView.dequeueReusableCell(withIdentifier: "cell_02", for: indexPath) as! secondTableViewCell
         
         // 選択されたジャンルによってセルの中身を変える

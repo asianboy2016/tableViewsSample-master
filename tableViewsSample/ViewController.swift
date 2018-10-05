@@ -55,7 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     // セルが選択された時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 選択されたcellの番号を記憶
+        // 選択されたcellの番号を記憶してる変数がchosenCell
         chosenCell = indexPath.row
         // 画面遷移の準備
         performSegue(withIdentifier: "toSecondViewController",sender: nil)
@@ -65,7 +65,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         // 遷移先のViecControllerのインスタンスを生成
         let secVC: secondViewController = (segue.destination as? secondViewController)!
-        // secondViewControllerのgetCellに選択された画像を設定する
+        // secondViewControllerのgetCellに選択された画像を設定する ※chosenCellはsecondViewControllerのgetCellの選択された番号という事？
         secVC.getCell = chosenCell
         
     }
